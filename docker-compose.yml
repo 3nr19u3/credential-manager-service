@@ -1,0 +1,26 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: appdb
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+    ports:
+      - "5432:5432"
+
+  api:
+    build: .
+    environment:
+      SPRING_R2DBC_URL: r2dbc:postgresql://db:5432/appdb
+      SPRING_R2DBC_USERNAME: app
+      SPRING_R2DBC_PASSWORD: app
+      SPRING_FLYWAY_URL: jdbc:postgresql://db:5432/appdb
+      SPRING_FLYWAY_USER: app
+      SPRING_FLYWAY_PASSWORD: app
+      APP_JWT_SECRET: "CHANGE_ME_32+_CHARS_MINIMUM_SECRET_KEY"
+      APP_JWT_ISSUER: "credentials-api"
+      APP_JWT_ACCESSTOKENMINUTES: "60"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db

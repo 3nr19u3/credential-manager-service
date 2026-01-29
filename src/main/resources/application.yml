@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  r2dbc:
+    url: ${SPRING_R2DBC_URL:r2dbc:postgresql://localhost:5432/credentials_db}
+    username: ${SPRING_R2DBC_USERNAME:postgres}
+    password: ${SPRING_R2DBC_PASSWORD:you_password}
+  flyway:
+    url: ${SPRING_FLYWAY_URL:jdbc:postgresql://localhost:5432/credentials_db}
+    user: ${SPRING_FLYWAY_USER:postgres}
+    password: ${SPRING_FLYWAY_PASSWORD:you_password}
+    locations: classpath:db/migration #to sure location is set correctly
+
+app:
+  jwt:
+    secret: ${APP_JWT_SECRET:dev-secret-dev-secret-dev-secret-dev-secret}
+    issuer: "credentials-api"
+    accessTokenMinutes: 60

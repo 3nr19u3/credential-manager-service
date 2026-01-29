@@ -1,0 +1,66 @@
+### ===== Maven / Java =====
+/target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+### ===== IntelliJ IDEA =====
+.idea/
+*.iml
+*.iws
+*.ipr
+
+### ===== VS Code =====
+.vscode/
+
+### ===== Eclipse =====
+.project
+.classpath
+.settings/
+
+### ===== macOS =====
+.DS_Store
+.AppleDouble
+.LSOverride
+
+### ===== Linux =====
+*~
+
+### ===== Docker =====
+# Docker volumes / local state
+docker-data/
+pgdata/
+**/pgdata/
+**/docker-data/
+
+# Override files
+docker-compose.override.yml
+
+### ===== Environment / Secrets =====
+.env
+.env.*
+!.env.example
+
+application-local.yml
+application-dev.yml
+application-test.yml
+
+# Any file that may contain secrets
+**/*secret*
+**/*password*
+**/*credentials*
+
+### ===== Logs =====
+logs/
+*.out
+
+### ===== Flyway =====
+# Ignore local-only SQL
+db/migration/*local*.sql
+
+### ===== OS / Misc =====
+Thumbs.db
+.cache/
+.tmp/
